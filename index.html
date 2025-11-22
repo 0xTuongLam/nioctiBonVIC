@@ -4,6 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>nioctiB Token Presale</title>
+<link rel="icon" type="image/png" href="CTB.png"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -43,11 +44,7 @@
 <div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1">
 <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-4 sm:px-6 lg:px-10 py-3">
 <div class="flex items-center gap-4 text-white">
-<div class="size-6 text-primary">
-<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
+<img src="CTB.png" alt="CTB Logo" class="size-10 rounded-full object-cover"/>
 <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">CTB Token</h2>
 </div>
 <button id="connectWalletBtn" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
@@ -172,24 +169,16 @@
 </div>
 </div>
 </div>
-</main>
-</div>
-</div>
-</div>
 </div>
 
-<!-- Adding ethers.js and re(own) libraries -->
 <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
-<script type="module">
-  import { createAppKit } from 'https://esm.sh/@reown/appkit@1.2.0/react'
-  import { Ethers5Adapter } from 'https://esm.sh/@reown/appkit-adapter-ethers5@1.2.0'
-
+<script>
   const VICTION_CHAIN_ID = 88;
   const VICTION_RPC = 'https://rpc.viction.xyz/';
   const CONTRACT_ADDRESS = '0x7814061D2929F363a2683375A6c5e0C2aa6Ad67E';
   const TOKENS_FOR_SALE = 1050000;
-  const RATE = 167.5; // 1 VIC = 167.5 CTB
-  const HARDCAP_VIC = TOKENS_FOR_SALE / RATE; // 6268.657 VIC
+  const RATE = 167.5;
+  const HARDCAP_VIC = TOKENS_FOR_SALE / RATE;
 
   const CONTRACT_ABI = [
     "function PRESALE_START() view returns (uint256)",
@@ -199,47 +188,17 @@
     "function claimed(address) view returns (uint256)",
     "function claimable(address) view returns (uint256)",
     "function claim_ed(address) view returns (uint256)",
-    "function buy() payable"
+    "function buy() payable",
+    "function claim()"
   ];
 
-  const victionMainnet = {
-    chainId: VICTION_CHAIN_ID,
-    name: 'Viction Mainnet',
-    currency: 'VIC',
-    explorerUrl: 'https://www.vicscan.xyz/',
-    rpcUrl: VICTION_RPC
-  };
-
-  let appKit;
   let provider;
   let signer;
   let contract;
   let userAddress;
   let countdownInterval;
 
-  async function initAppKit() {
-    try {
-      const projectId = 'YOUR_REOWN_PROJECT_ID'; // Replace with actual project ID from cloud.reown.com
-      
-      appKit = createAppKit({
-        adapters: [new Ethers5Adapter()],
-        networks: [victionMainnet],
-        defaultNetwork: victionMainnet,
-        projectId,
-        features: {
-          analytics: true
-        }
-      });
-
-      console.log('[v0] AppKit initialized');
-    } catch (error) {
-      console.error('[v0] Failed to initialize AppKit:', error);
-      // Fallback to direct ethers connection if AppKit fails
-      await connectDirectly();
-    }
-  }
-
-  async function connectDirectly() {
+  async function connectWallet() {
     if (typeof window.ethereum !== 'undefined') {
       try {
         await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -276,7 +235,7 @@
         updateConnectButton();
         await loadContractData();
       } catch (error) {
-        console.error('[v0] Connection error:', error);
+        console.error('Connection error:', error);
         alert('Failed to connect wallet. Please try again.');
       }
     } else {
@@ -293,14 +252,9 @@
 
   async function loadContractData() {
     try {
-      // Read contract values
       const presaleStart = await contract.PRESALE_START();
       const presaleEnd = await contract.PRESALE_END();
       const totalRaised = await contract.totalContributed();
-
-      console.log('[v0] Presale Start:', presaleStart.toString());
-      console.log('[v0] Presale End:', presaleEnd.toString());
-      console.log('[v0] Total Raised:', ethers.utils.formatEther(totalRaised));
 
       if (presaleStart.eq(0)) {
         document.getElementById('countdownSection').style.display = 'none';
@@ -310,12 +264,11 @@
         updateProgress(totalRaised);
       }
 
-      // Load user-specific data if connected
       if (userAddress) {
         await loadUserData();
       }
     } catch (error) {
-      console.error('[v0] Error loading contract data:', error);
+      console.error('Error loading contract data:', error);
     }
   }
 
@@ -331,20 +284,17 @@
       document.getElementById('userClaimed').textContent = `${parseFloat(ethers.utils.formatEther(claimed)).toFixed(2)} CTB`;
       document.getElementById('userClaimable').textContent = `${parseFloat(ethers.utils.formatEther(claimable)).toFixed(2)} CTB`;
       
-      // Calculate not yet claimed
       const notClaimed = allocated.sub(claimed);
       document.getElementById('userNotClaimed').textContent = `${parseFloat(ethers.utils.formatEther(notClaimed)).toFixed(2)} CTB`;
 
-      // Enable claim button if there's something to claim
       const claimBtn = document.getElementById('claimBtn');
       if (claimable.gt(0)) {
-        claimBtn.classList.remove('opacity-60', 'cursor-not-allowed');
+        claimBtn.classList.remove('opacity-60', 'cursor-not-allowed', 'text-white/50');
         claimBtn.classList.add('bg-primary', 'cursor-pointer');
-        claimBtn.querySelector('.text-white\\/50').classList.remove('text-white/50');
         claimBtn.querySelector('span').classList.add('text-white');
       }
     } catch (error) {
-      console.error('[v0] Error loading user data:', error);
+      console.error('Error loading user data:', error);
     }
   }
 
@@ -395,7 +345,6 @@
     if (userAddress && provider) {
       const balance = await provider.getBalance(userAddress);
       const balanceInVic = ethers.utils.formatEther(balance);
-      // Leave some for gas
       const maxAmount = Math.max(0, parseFloat(balanceInVic) - 0.01);
       document.getElementById('buy-amount').value = maxAmount.toFixed(4);
       document.getElementById('receive-amount').value = (maxAmount * RATE).toFixed(2);
@@ -421,7 +370,7 @@
       alert('Purchase successful!');
       await loadContractData();
     } catch (error) {
-      console.error('[v0] Buy error:', error);
+      console.error('Buy error:', error);
       alert('Transaction failed: ' + (error.message || 'Unknown error'));
     }
   });
@@ -445,27 +394,24 @@
       alert('Tokens claimed successfully!');
       await loadContractData();
     } catch (error) {
-      console.error('[v0] Claim error:', error);
+      console.error('Claim error:', error);
       alert('Claim failed: ' + (error.message || 'Unknown error'));
     }
   });
 
   document.getElementById('connectWalletBtn').addEventListener('click', async () => {
     if (!userAddress) {
-      await connectDirectly();
+      await connectWallet();
     }
   });
 
   window.addEventListener('load', async () => {
-    await initAppKit();
-    
-    // Try to read contract data even without wallet connection (for public data)
     try {
       provider = new ethers.providers.JsonRpcProvider(VICTION_RPC);
       contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider);
       await loadContractData();
     } catch (error) {
-      console.error('[v0] Error loading initial data:', error);
+      console.error('Error loading initial data:', error);
     }
   });
 </script>
