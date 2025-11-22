@@ -234,6 +234,7 @@
         
         updateConnectButton();
         await loadContractData();
+        startAutoRefresh();
       } catch (error) {
         console.error('Connection error:', error);
         alert('Failed to connect wallet. Please try again.');
@@ -292,6 +293,9 @@
         claimBtn.classList.remove('opacity-60', 'cursor-not-allowed', 'text-white/50');
         claimBtn.classList.add('bg-primary', 'cursor-pointer');
         claimBtn.querySelector('span').classList.add('text-white');
+      } else {
+        claimBtn.classList.add('opacity-60', 'cursor-not-allowed', 'text-white/50');
+        claimBtn.classList.remove('bg-primary');
       }
     } catch (error) {
       console.error('Error loading user data:', error);
@@ -333,6 +337,36 @@
       document.getElementById('countdownMinutes').textContent = String(minutes).padStart(2, '0');
       document.getElementById('countdownSeconds').textContent = String(seconds).padStart(2, '0');
     }, 1000);
+  }
+
+  function startAutoRefresh() {
+    setInterval(async () => {
+      if (userAddress && contract) {
+        try {
+          const allocated = await contract.allocated(userAddress);
+          const claimed = await contract.claim_ed(userAddress);
+          const claimable = await contract.claimable(userAddress);
+
+          document.getElementById('userClaimable').textContent = `${parseFloat(ethers.utils.formatEther(claimable)).toFixed(2)} CTB`;
+          document.getElementById('userClaimed').textContent = `${parseFloat(ethers.utils.formatEther(claimed)).toFixed(2)} CTB`;
+          
+          const notClaimed = allocated.sub(claimed);
+          document.getElementById('userNotClaimed').textContent = `${parseFloat(ethers.utils.formatEther(notClaimed)).toFixed(2)} CTB`;
+
+          const claimBtn = document.getElementById('claimBtn');
+          if (claimable.gt(0)) {
+            claimBtn.classList.remove('opacity-60', 'cursor-not-allowed', 'text-white/50');
+            claimBtn.classList.add('bg-primary', 'cursor-pointer');
+            claimBtn.querySelector('span').classList.add('text-white');
+          } else {
+            claimBtn.classList.add('opacity-60', 'cursor-not-allowed', 'text-white/50');
+            claimBtn.classList.remove('bg-primary');
+          }
+        } catch (error) {
+          console.error('Error refreshing user data:', error);
+        }
+      }
+    }, 15000); // Refresh every 15 seconds
   }
 
   document.getElementById('buy-amount').addEventListener('input', (e) => {
