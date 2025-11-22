@@ -1,9 +1,17 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { useAccount, useReadContract, useWriteContract, useWaitForTransactionReceipt } from "wagmi"
+import {
+  useAccount,
+  useReadContract,
+  useWriteContract,
+  useWaitForTransactionReceipt,
+  useConnect,
+  useDisconnect,
+} from "wagmi"
 import { formatEther, parseEther } from "viem"
 import { victionMainnet } from "@/config"
+import { injected } from "wagmi/connectors"
 
 const CONTRACT_ADDRESS = "0x7814061D2929F363a2683375A6c5e0C2aa6Ad67E"
 const TOKENS_FOR_SALE = 1050000
@@ -71,6 +79,8 @@ const CONTRACT_ABI = [
 
 export default function PresalePage() {
   const { address, isConnected } = useAccount()
+  const { connect } = useConnect()
+  const { disconnect } = useDisconnect()
   const [buyAmount, setBuyAmount] = useState<string>("")
   const [receiveAmount, setReceiveAmount] = useState<string>("0")
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
@@ -213,6 +223,14 @@ export default function PresalePage() {
 
   const showCountdown = presaleStart && Number(presaleStart) > 0
 
+  const handleWalletClick = () => {
+    if (isConnected) {
+      disconnect()
+    } else {
+      connect({ connector: injected(), chainId: victionMainnet.id })
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 text-white">
       {/* Header */}
@@ -230,11 +248,11 @@ export default function PresalePage() {
             </div>
           </div>
           <button
-            onClick={() => {}}
+            onClick={handleWalletClick}
             className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#5048e5] text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#5048e5]/90 transition-colors"
           >
             <span className="truncate">
-              {isConnected ? `${address.slice(0, 6)}...${address.slice(-4)}` : "Connect Wallet"}
+              {isConnected ? `${address?.slice(0, 6)}...${address?.slice(-4)}` : "Connect Wallet"}
             </span>
           </button>
         </div>

@@ -9,10 +9,10 @@ importers:
   .:
     dependencies:
       '@reown/appkit':
-        specifier: latest
+        specifier: 1.8.14
         version: 1.8.14(@types/react@19.2.6)(bufferutil@4.0.9)(fastestsmallesttextencoderdecoder@1.0.22)(react@19.2.0)(typescript@5.0.2)(use-sync-external-store@1.4.0(react@19.2.0))(utf-8-validate@5.0.10)(ws@8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10))(zod@3.25.76)
       '@reown/appkit-adapter-wagmi':
-        specifier: latest
+        specifier: 1.8.14
         version: 1.8.14(c49f761e2648dc5af6764e939fa8a0d2)
       '@tanstack/react-query':
         specifier: latest
@@ -20,9 +20,6 @@ importers:
       '@vercel/analytics':
         specifier: latest
         version: 1.5.0(next@16.0.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
-      '@wagmi/core':
-        specifier: latest
-        version: 3.0.0(@tanstack/query-core@5.90.10)(@types/react@19.2.6)(react@19.2.0)(typescript@5.0.2)(use-sync-external-store@1.4.0(react@19.2.0))(viem@2.39.3(bufferutil@4.0.9)(typescript@5.0.2)(utf-8-validate@5.0.10)(zod@3.25.76))
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
