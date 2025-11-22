@@ -85,6 +85,11 @@ export default function PresalePage() {
   const [receiveAmount, setReceiveAmount] = useState<string>("0")
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
   const [progressPercent, setProgressPercent] = useState<number>(0)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const { data: presaleStart } = useReadContract({
     address: CONTRACT_ADDRESS,
@@ -229,6 +234,10 @@ export default function PresalePage() {
     } else {
       connect({ connector: injected(), chainId: victionMainnet.id })
     }
+  }
+
+  if (!mounted) {
+    return null
   }
 
   return (
