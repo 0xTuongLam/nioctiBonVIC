@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>nioctiB Token Presale</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#5048e5",
+                    "background-light": "#f6f6f8",
+                    "background-dark": "#121117",
+                },
+                fontFamily: {
+                    "display": ["Inter", "sans-serif"]
+                },
+                borderRadius: {
+                    "DEFAULT": "0.5rem",
+                    "lg": "1rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+                },
+            },
+        },
+    }
+</script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+</style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 sm:px-8 md:px-20 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-4 sm:px-6 lg:px-10 py-3">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">CTB Token</h2>
+</div>
+<button id="connectWalletBtn" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Connect Wallet</span>
+</button>
+</header>
+<main class="flex-1 py-10 px-4 sm:px-6 lg:px-0">
+<div class="bg-[#1c1b25] rounded-xl p-6 sm:p-8 border border-white/10">
+<div class="flex flex-wrap justify-between gap-3 pb-6">
+<p class="text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Join the nioctiB Token Presale</p>
+</div>
+<div class="flex flex-wrap gap-4 pb-6">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 border border-[#3e3d52]">
+<p class="text-gray-400 text-base font-medium leading-normal">Presale Price</p>
+<p class="text-white tracking-light text-xl md:text-2xl font-bold leading-tight">1 VIC = 167.5 CTB</p>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 border border-[#3e3d52]">
+<p class="text-gray-400 text-base font-medium leading-normal">Total Supply</p>
+<p class="text-white tracking-light text-xl md:text-2xl font-bold leading-tight">21,000,000 CTB</p>
+</div>
+</div>
+<!-- Countdown Section (hidden by default, shown if PRESALE_START > 0) -->
+<div id="countdownSection" class="border-t border-b border-white/10 py-6" style="display: none;">
+<h2 class="text-white tracking-light text-2xl font-bold leading-tight text-center pb-3 pt-2">Presale Ends In:</h2>
+<div class="flex gap-2 sm:gap-4 py-4 px-2 sm:px-4 max-w-lg mx-auto">
+<div class="flex grow basis-0 flex-col items-stretch gap-2">
+<div class="flex h-16 sm:h-20 grow items-center justify-center rounded-xl px-3 bg-[#2a2938]">
+<p id="countdownDays" class="text-white text-2xl sm:text-4xl font-bold leading-tight tracking-[-0.015em]">00</p>
+</div>
+<div class="flex items-center justify-center">
+<p class="text-gray-400 text-xs sm:text-sm font-normal leading-normal">Days</p>
+</div>
+</div>
+<div class="flex grow basis-0 flex-col items-stretch gap-2">
+<div class="flex h-16 sm:h-20 grow items-center justify-center rounded-xl px-3 bg-[#2a2938]">
+<p id="countdownHours" class="text-white text-2xl sm:text-4xl font-bold leading-tight tracking-[-0.015em]">00</p>
+</div>
+<div class="flex items-center justify-center">
+<p class="text-gray-400 text-xs sm:text-sm font-normal leading-normal">Hours</p>
+</div>
+</div>
+<div class="flex grow basis-0 flex-col items-stretch gap-2">
+<div class="flex h-16 sm:h-20 grow items-center justify-center rounded-xl px-3 bg-[#2a2938]">
+<p id="countdownMinutes" class="text-white text-2xl sm:text-4xl font-bold leading-tight tracking-[-0.015em]">00</p>
+</div>
+<div class="flex items-center justify-center">
+<p class="text-gray-400 text-xs sm:text-sm font-normal leading-normal">Minutes</p>
+</div>
+</div>
+<div class="flex grow basis-0 flex-col items-stretch gap-2">
+<div class="flex h-16 sm:h-20 grow items-center justify-center rounded-xl px-3 bg-[#2a2938]">
+<p id="countdownSeconds" class="text-white text-2xl sm:text-4xl font-bold leading-tight tracking-[-0.015em]">00</p>
+</div>
+<div class="flex items-center justify-center">
+<p class="text-gray-400 text-xs sm:text-sm font-normal leading-normal">Seconds</p>
+</div>
+</div>
+</div>
+<div class="w-full mt-4">
+<div class="flex justify-between items-center mb-2 text-sm">
+<span class="font-medium text-gray-300">Progress</span>
+<span id="progressPercent" class="font-bold text-white">0%</span>
+</div>
+<div class="w-full bg-[#2a2938] rounded-full h-3">
+<div id="progressBar" class="bg-primary h-3 rounded-full" style="width: 0%"></div>
+</div>
+<div class="flex justify-between items-center mt-2 text-xs text-gray-400">
+<span id="progressText">0 VIC / 0 VIC Raised</span>
+<span>Hard Cap</span>
+</div>
+</div>
+</div>
+<div class="pt-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-gray-300" for="buy-amount">Amount in VIC</label>
+<div class="relative">
+<input class="w-full bg-[#2a2938] text-white border border-[#3e3d52] rounded-lg h-12 px-4 focus:ring-primary focus:border-primary" id="buy-amount" placeholder="0.0" type="number"/>
+<button id="maxBtn" class="absolute inset-y-0 right-0 flex items-center pr-3 text-sm font-bold text-primary">MAX</button>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-gray-300" for="receive-amount">You will receive (CTB)</label>
+<input class="w-full bg-[#2a2938] text-white border border-[#3e3d52] rounded-lg h-12 px-4 focus:ring-primary focus:border-primary" disabled="" id="receive-amount" placeholder="0" type="text"/>
+</div>
+</div>
+<div class="mt-6 flex flex-col sm:flex-row gap-4">
+<button id="buyBtn" class="flex-1 flex min-w-[84px] max-w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-4 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Buy Now</span>
+</button>
+<button id="claimBtn" class="flex-1 flex min-w-[84px] max-w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-4 bg-[#2a2938] text-white/50 text-base font-bold leading-normal tracking-[0.015em] opacity-60 cursor-not-allowed">
+<span class="truncate">Claim Tokens</span>
+</button>
+</div>
+<div class="mt-8 p-4 bg-[#2a2938] rounded-lg border border-[#3e3d52] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<div>
+<p class="text-sm text-gray-400">Your VIC Balance</p>
+<p id="userVicBalance" class="text-lg font-bold text-white">0 VIC</p>
+</div>
+<div class="sm:text-right">
+<p class="text-sm text-gray-400">Your Purchased CTB</p>
+<p id="userPurchasedCtb" class="text-lg font-bold text-white">0 CTB</p>
+</div>
+</div>
+<div class="mt-4 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="flex flex-col gap-1 rounded-lg p-3 bg-[#2a2938] border border-[#3e3d52]">
+<p class="text-gray-400 text-xs sm:text-sm font-medium leading-normal">Your Claimable Tokens</p>
+<p id="userClaimable" class="text-white text-base sm:text-lg font-bold leading-tight">0 CTB</p>
+</div>
+<div class="flex flex-col gap-1 rounded-lg p-3 bg-[#2a2938] border border-[#3e3d52]">
+<p class="text-gray-400 text-xs sm:text-sm font-medium leading-normal">Total Claimed</p>
+<p id="userClaimed" class="text-white text-base sm:text-lg font-bold leading-tight">0 CTB</p>
+</div>
+<div class="flex flex-col gap-1 rounded-lg p-3 bg-[#2a2938] border border-[#3e3d52]">
+<p class="text-gray-400 text-xs sm:text-sm font-medium leading-normal">Not Yet Claimed</p>
+<p id="userNotClaimed" class="text-white text-base sm:text-lg font-bold leading-tight">0 CTB</p>
+</div>
+<div class="flex flex-col gap-1 rounded-lg p-3 bg-[#2a2938] border border-[#3e3d52]">
+<p class="text-gray-400 text-xs sm:text-sm font-medium leading-normal">Tokens for Sale</p>
+<p class="text-white text-base sm:text-lg font-bold leading-tight">1,050,000 CTB</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Adding ethers.js and re(own) libraries -->
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+<script type="module">
+  import { createAppKit } from 'https://esm.sh/@reown/appkit@1.2.0/react'
+  import { Ethers5Adapter } from 'https://esm.sh/@reown/appkit-adapter-ethers5@1.2.0'
+
+  const VICTION_CHAIN_ID = 88;
+  const VICTION_RPC = 'https://rpc.viction.xyz/';
+  const CONTRACT_ADDRESS = '0x7814061D2929F363a2683375A6c5e0C2aa6Ad67E';
+  const TOKENS_FOR_SALE = 1050000;
+  const RATE = 167.5; // 1 VIC = 167.5 CTB
+  const HARDCAP_VIC = TOKENS_FOR_SALE / RATE; // 6268.657 VIC
+
+  const CONTRACT_ABI = [
+    "function PRESALE_START() view returns (uint256)",
+    "function PRESALE_END() view returns (uint256)",
+    "function totalContributed() view returns (uint256)",
+    "function allocated(address) view returns (uint256)",
+    "function claimed(address) view returns (uint256)",
+    "function claimable(address) view returns (uint256)",
+    "function claim_ed(address) view returns (uint256)",
+    "function buy() payable"
+  ];
+
+  const victionMainnet = {
+    chainId: VICTION_CHAIN_ID,
+    name: 'Viction Mainnet',
+    currency: 'VIC',
+    explorerUrl: 'https://www.vicscan.xyz/',
+    rpcUrl: VICTION_RPC
+  };
+
+  let appKit;
+  let provider;
+  let signer;
+  let contract;
+  let userAddress;
+  let countdownInterval;
+
+  async function initAppKit() {
+    try {
+      const projectId = 'YOUR_REOWN_PROJECT_ID'; // Replace with actual project ID from cloud.reown.com
+      
+      appKit = createAppKit({
+        adapters: [new Ethers5Adapter()],
+        networks: [victionMainnet],
+        defaultNetwork: victionMainnet,
+        projectId,
+        features: {
+          analytics: true
+        }
+      });
+
+      console.log('[v0] AppKit initialized');
+    } catch (error) {
+      console.error('[v0] Failed to initialize AppKit:', error);
+      // Fallback to direct ethers connection if AppKit fails
+      await connectDirectly();
+    }
+  }
+
+  async function connectDirectly() {
+    if (typeof window.ethereum !== 'undefined') {
+      try {
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
+        provider = new ethers.providers.Web3Provider(window.ethereum);
+        
+        const network = await provider.getNetwork();
+        if (network.chainId !== VICTION_CHAIN_ID) {
+          try {
+            await window.ethereum.request({
+              method: 'wallet_switchEthereumChain',
+              params: [{ chainId: `0x${VICTION_CHAIN_ID.toString(16)}` }],
+            });
+          } catch (switchError) {
+            if (switchError.code === 4902) {
+              await window.ethereum.request({
+                method: 'wallet_addEthereumChain',
+                params: [{
+                  chainId: `0x${VICTION_CHAIN_ID.toString(16)}`,
+                  chainName: 'Viction Mainnet',
+                  nativeCurrency: { name: 'VIC', symbol: 'VIC', decimals: 18 },
+                  rpcUrls: [VICTION_RPC],
+                  blockExplorerUrls: ['https://www.vicscan.xyz/']
+                }]
+              });
+            }
+          }
+          provider = new ethers.providers.Web3Provider(window.ethereum);
+        }
+
+        signer = provider.getSigner();
+        userAddress = await signer.getAddress();
+        contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
+        
+        updateConnectButton();
+        await loadContractData();
+      } catch (error) {
+        console.error('[v0] Connection error:', error);
+        alert('Failed to connect wallet. Please try again.');
+      }
+    } else {
+      alert('Please install MetaMask or another Web3 wallet!');
+    }
+  }
+
+  function updateConnectButton() {
+    const btn = document.getElementById('connectWalletBtn');
+    if (userAddress) {
+      btn.querySelector('span').textContent = `${userAddress.slice(0, 6)}...${userAddress.slice(-4)}`;
+    }
+  }
+
+  async function loadContractData() {
+    try {
+      // Read contract values
+      const presaleStart = await contract.PRESALE_START();
+      const presaleEnd = await contract.PRESALE_END();
+      const totalRaised = await contract.totalContributed();
+
+      console.log('[v0] Presale Start:', presaleStart.toString());
+      console.log('[v0] Presale End:', presaleEnd.toString());
+      console.log('[v0] Total Raised:', ethers.utils.formatEther(totalRaised));
+
+      if (presaleStart.eq(0)) {
+        document.getElementById('countdownSection').style.display = 'none';
+      } else {
+        document.getElementById('countdownSection').style.display = 'block';
+        startCountdown(presaleEnd.toNumber());
+        updateProgress(totalRaised);
+      }
+
+      // Load user-specific data if connected
+      if (userAddress) {
+        await loadUserData();
+      }
+    } catch (error) {
+      console.error('[v0] Error loading contract data:', error);
+    }
+  }
+
+  async function loadUserData() {
+    try {
+      const balance = await provider.getBalance(userAddress);
+      const allocated = await contract.allocated(userAddress);
+      const claimed = await contract.claim_ed(userAddress);
+      const claimable = await contract.claimable(userAddress);
+
+      document.getElementById('userVicBalance').textContent = `${parseFloat(ethers.utils.formatEther(balance)).toFixed(4)} VIC`;
+      document.getElementById('userPurchasedCtb').textContent = `${parseFloat(ethers.utils.formatEther(allocated)).toFixed(2)} CTB`;
+      document.getElementById('userClaimed').textContent = `${parseFloat(ethers.utils.formatEther(claimed)).toFixed(2)} CTB`;
+      document.getElementById('userClaimable').textContent = `${parseFloat(ethers.utils.formatEther(claimable)).toFixed(2)} CTB`;
+      
+      // Calculate not yet claimed
+      const notClaimed = allocated.sub(claimed);
+      document.getElementById('userNotClaimed').textContent = `${parseFloat(ethers.utils.formatEther(notClaimed)).toFixed(2)} CTB`;
+
+      // Enable claim button if there's something to claim
+      const claimBtn = document.getElementById('claimBtn');
+      if (claimable.gt(0)) {
+        claimBtn.classList.remove('opacity-60', 'cursor-not-allowed');
+        claimBtn.classList.add('bg-primary', 'cursor-pointer');
+        claimBtn.querySelector('.text-white\\/50').classList.remove('text-white/50');
+        claimBtn.querySelector('span').classList.add('text-white');
+      }
+    } catch (error) {
+      console.error('[v0] Error loading user data:', error);
+    }
+  }
+
+  function updateProgress(totalRaised) {
+    const raisedVic = parseFloat(ethers.utils.formatEther(totalRaised));
+    const percentage = Math.min((raisedVic / HARDCAP_VIC) * 100, 100);
+    
+    document.getElementById('progressPercent').textContent = `${percentage.toFixed(1)}%`;
+    document.getElementById('progressBar').style.width = `${percentage}%`;
+    document.getElementById('progressText').textContent = `${raisedVic.toFixed(2)} VIC / ${HARDCAP_VIC.toFixed(2)} VIC Raised`;
+  }
+
+  function startCountdown(endTimestamp) {
+    if (countdownInterval) clearInterval(countdownInterval);
+
+    countdownInterval = setInterval(() => {
+      const now = Math.floor(Date.now() / 1000);
+      const remaining = endTimestamp - now;
+
+      if (remaining <= 0) {
+        clearInterval(countdownInterval);
+        document.getElementById('countdownDays').textContent = '00';
+        document.getElementById('countdownHours').textContent = '00';
+        document.getElementById('countdownMinutes').textContent = '00';
+        document.getElementById('countdownSeconds').textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(remaining / 86400);
+      const hours = Math.floor((remaining % 86400) / 3600);
+      const minutes = Math.floor((remaining % 3600) / 60);
+      const seconds = remaining % 60;
+
+      document.getElementById('countdownDays').textContent = String(days).padStart(2, '0');
+      document.getElementById('countdownHours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('countdownMinutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('countdownSeconds').textContent = String(seconds).padStart(2, '0');
+    }, 1000);
+  }
+
+  document.getElementById('buy-amount').addEventListener('input', (e) => {
+    const vicAmount = parseFloat(e.target.value) || 0;
+    const ctbAmount = vicAmount * RATE;
+    document.getElementById('receive-amount').value = ctbAmount.toFixed(2);
+  });
+
+  document.getElementById('maxBtn').addEventListener('click', async () => {
+    if (userAddress && provider) {
+      const balance = await provider.getBalance(userAddress);
+      const balanceInVic = ethers.utils.formatEther(balance);
+      // Leave some for gas
+      const maxAmount = Math.max(0, parseFloat(balanceInVic) - 0.01);
+      document.getElementById('buy-amount').value = maxAmount.toFixed(4);
+      document.getElementById('receive-amount').value = (maxAmount * RATE).toFixed(2);
+    }
+  });
+
+  document.getElementById('buyBtn').addEventListener('click', async () => {
+    if (!userAddress) {
+      alert('Please connect your wallet first!');
+      return;
+    }
+
+    const vicAmount = document.getElementById('buy-amount').value;
+    if (!vicAmount || parseFloat(vicAmount) <= 0) {
+      alert('Please enter a valid VIC amount!');
+      return;
+    }
+
+    try {
+      const tx = await contract.buy({ value: ethers.utils.parseEther(vicAmount) });
+      alert('Transaction submitted! Waiting for confirmation...');
+      await tx.wait();
+      alert('Purchase successful!');
+      await loadContractData();
+    } catch (error) {
+      console.error('[v0] Buy error:', error);
+      alert('Transaction failed: ' + (error.message || 'Unknown error'));
+    }
+  });
+
+  document.getElementById('claimBtn').addEventListener('click', async () => {
+    if (!userAddress) {
+      alert('Please connect your wallet first!');
+      return;
+    }
+
+    try {
+      const claimable = await contract.claimable(userAddress);
+      if (claimable.eq(0)) {
+        alert('No tokens available to claim yet!');
+        return;
+      }
+
+      const tx = await contract.claim();
+      alert('Claim transaction submitted! Waiting for confirmation...');
+      await tx.wait();
+      alert('Tokens claimed successfully!');
+      await loadContractData();
+    } catch (error) {
+      console.error('[v0] Claim error:', error);
+      alert('Claim failed: ' + (error.message || 'Unknown error'));
+    }
+  });
+
+  document.getElementById('connectWalletBtn').addEventListener('click', async () => {
+    if (!userAddress) {
+      await connectDirectly();
+    }
+  });
+
+  window.addEventListener('load', async () => {
+    await initAppKit();
+    
+    // Try to read contract data even without wallet connection (for public data)
+    try {
+      provider = new ethers.providers.JsonRpcProvider(VICTION_RPC);
+      contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider);
+      await loadContractData();
+    } catch (error) {
+      console.error('[v0] Error loading initial data:', error);
+    }
+  });
+</script>
+
+</body>
+</html>
