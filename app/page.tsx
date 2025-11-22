@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react"
 import { ethers } from "ethers"
-import { createAppKit } from "@reown/appkit/react"
-import { Ethers5Adapter } from "@reown/appkit-adapter-ethers5"
 
 const VICTION_CHAIN_ID = 88
 const VICTION_RPC = "https://rpc.viction.xyz/"
@@ -25,23 +23,12 @@ const CONTRACT_ABI = [
 ]
 
 const victionMainnet = {
-  chainId: VICTION_CHAIN_ID,
+  chainId: VICTION_CHAIN_ID as number,
   name: "Viction Mainnet",
   currency: "VIC",
   explorerUrl: "https://www.vicscan.xyz/",
   rpcUrl: VICTION_RPC,
 }
-
-const projectId = "2dd293162620b2c94d1ddb71b66d4d14"
-
-const metadata = {
-  name: "nioctiB Token Presale",
-  description: "CTB Token Presale on Viction",
-  url: typeof window !== "undefined" ? window.location.origin : "https://presale.example.com",
-  icons: ["https://pbs.twimg.com/profile_images/1992127967460474881/4RycsQnl_400x400.jpg"],
-}
-
-let appKit: any = null
 
 export default function PresalePage() {
   const [provider, setProvider] = useState<ethers.providers.Provider | null>(null)
@@ -65,23 +52,6 @@ export default function PresalePage() {
   useEffect(() => {
     setIsClient(true)
     initProvider()
-
-    if (!appKit) {
-      try {
-        appKit = createAppKit({
-          adapters: [new Ethers5Adapter()],
-          networks: [victionMainnet],
-          defaultNetwork: victionMainnet,
-          projectId,
-          metadata,
-          features: {
-            analytics: true,
-          },
-        })
-      } catch (error) {
-        console.error("Failed to initialize AppKit:", error)
-      }
-    }
   }, [])
 
   useEffect(() => {

@@ -9,9 +9,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@ethersproject/sha2": "latest",
-    "@reown/appkit": "latest",
-    "@reown/appkit-adapter-ethers5": "latest",
+    "@reown/appkit": "1.8.14",
+    "@reown/appkit-adapter-ethers5": "1.8.14",
     "@vercel/analytics": "latest",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
